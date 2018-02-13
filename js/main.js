@@ -8,4 +8,5 @@ function handleResize(evt) {
 	context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
+handleResize();
 window.addEventListener('resize', handleResize);
