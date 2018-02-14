@@ -1,5 +1,6 @@
 import HairPoint from './hairpoint.js';
 import Hair from './hair.js';
+import Pea from './pea.js';
 
 
 function handleResize(evt) {
@@ -17,3 +18,4 @@ window.addEventListener('resize', handleResize);
 
 hp = new HairPoint();
 h = new Hair();
+p = new Pea();
