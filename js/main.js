@@ -1,3 +1,7 @@
+import HairPoint from './hairpoint.js';
+import Hair from './hair.js';
+
+
 function handleResize(evt) {
 	var canvas = document.getElementById('canvas');
 	canvas.width = window.innerWidth;
@@ -10,3 +14,6 @@ function handleResize(evt) {
 
 handleResize();
 window.addEventListener('resize', handleResize);
+
+hp = new HairPoint();
+h = new Hair();
