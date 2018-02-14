@@ -1,6 +1,10 @@
 import HairPoint from './hairpoint.js';
 import Hair from './hair.js';
 import Pea from './pea.js';
+import Point from '@danehansen/point'
+import Random from 'random-js'
+
+let random = new Random();
 
 
 function handleResize(evt) {
@@ -16,6 +20,11 @@ function handleResize(evt) {
 handleResize();
 window.addEventListener('resize', handleResize);
 
-hp = new HairPoint();
-h = new Hair();
-p = new Pea();
+var hp = new HairPoint();
+var h = new Hair();
+var p = new Pea();
+
+for (let i = 0; i < 20; i ++) {
+	let point = Point.polar(1, random.real(0, 2 * Math.PI));
+	console.log(point);
+}
