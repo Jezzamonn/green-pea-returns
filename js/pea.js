@@ -1,6 +1,6 @@
-import Hair from './hair.js';
 import Point from '@danehansen/point'
-import Random from 'random-js'
+
+import Hair from './hair.js';
 
 /**
  * ...
@@ -34,6 +34,7 @@ export default class Pea {
 	update() {
 		this.x += this.dx;
 		this.y += this.dy;
+		this.shuffle(2);
 		this.damp(0.6);
 
 		for (let i = 0; i < this.hairs.length; i ++) {
@@ -64,9 +65,9 @@ export default class Pea {
 	}
 
 	shuffle(amt) {
-		// let point = Point.polar(amt, random.real(0, 2 * Math.PI));
-		// this.dx += point.x;
-		// this.dy += point.y;
+		let point = Point.polar(amt, window.random.real(0, 2 * Math.PI));
+		this.dx += point.x;
+		this.dy += point.y;
 	}
 
 	repulse(x, y, amt = 70) {

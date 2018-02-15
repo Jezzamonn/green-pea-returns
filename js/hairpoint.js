@@ -1,5 +1,4 @@
 import Point from '@danehansen/point'
-import Random from 'random-js'
 
 /**
  * ...
@@ -40,9 +39,9 @@ export default class HairPoint {
 	}
 
 	shuffle(amt) {
-		// let point = Point.polar(amt, randomp.real(0, 2 * Math.PI));
-		// this.dx += point.x;
-		// this.dy += point.y;
+		let point = Point.polar(amt, window.random.real(0, 2 * Math.PI));
+		this.dx += point.x;
+		this.dy += point.y;
 	}
 
 	damp(amt) {

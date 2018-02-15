@@ -1,6 +1,10 @@
+import Random from 'random-js';
+
 import HairPoint from './hairpoint.js';
 import Hair from './hair.js';
 import Pea from './pea.js';
+
+window.random = new Random();
 
 let canvas = document.getElementById('canvas');
 let context = canvas.getContext('2d');
