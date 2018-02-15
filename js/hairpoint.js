@@ -18,8 +18,8 @@ export default class HairPoint {
 	update() {
 		this.x += this.dx;
 		this.y += this.dy;
-		if (prev) {
-			this.accelTowards(prev);
+		if (this.prev) {
+			this.accelTowards(this.prev);
 		}
 		this.damp(0.5);
 		this.shuffle(3);
@@ -40,9 +40,9 @@ export default class HairPoint {
 	}
 
 	shuffle(amt) {
-		let point = Point.polar(amt, Random.float(2 * Math.PI));
-		this.dx += point.x;
-		this.dy += point.y;
+		// let point = Point.polar(amt, randomp.real(0, 2 * Math.PI));
+		// this.dx += point.x;
+		// this.dy += point.y;
 	}
 
 	damp(amt) {

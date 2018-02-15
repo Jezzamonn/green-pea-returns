@@ -1,4 +1,6 @@
 import Hair from './hair.js';
+import Point from '@danehansen/point'
+import Random from 'random-js'
 
 /**
  * ...
@@ -61,11 +63,11 @@ export default class Pea {
 		this.dy += amt * yDist;
 	}
 
-	// shuffle(amt) {
-	// 	let point = Point.polar(amt, Rndm.float(2 * Math.PI));
-	// 	dx += point.x;
-	// 	dy += point.y;
-	// }
+	shuffle(amt) {
+		// let point = Point.polar(amt, random.real(0, 2 * Math.PI));
+		// this.dx += point.x;
+		// this.dy += point.y;
+	}
 
 	repulse(x, y, amt = 70) {
 		let xDist = x - this.x;
@@ -91,7 +93,7 @@ export default class Pea {
 	}
 
 	render(context) {
-		// TODO: rotate the person
+		// TODO: rotate the person.
 		context.drawImage(this.image, this.centerX, this.centerY);
 
 		for (let i = 0; i < this.hairs.length; i ++) {

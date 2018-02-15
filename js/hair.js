@@ -7,7 +7,7 @@ import HairPoint from './hairpoint.js';
  */
 export default class Hair {
 
-	Hair(x, y, numPoints, startColor, endColor) {
+	constructor(x, y, numPoints, startColor, endColor) {
 		this.startColor = startColor;
 		this.endColor = endColor;
 
@@ -29,7 +29,7 @@ export default class Hair {
 	}
 
 	update() {
-		for (let i = 0; i < points.length; i ++) {
+		for (let i = 0; i < this.points.length; i ++) {
 			this.points[i].update();
 		}
 	}
