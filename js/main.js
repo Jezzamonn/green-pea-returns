@@ -6,25 +6,27 @@ import Random from 'random-js'
 
 let random = new Random();
 
+let canvas = document.getElementById('canvas');
+let context = canvas.getContext('2d');
+
+var hp = new HairPoint();
+var h = new Hair();
+var p = new Pea(20, 20);
 
 function handleResize(evt) {
-	var canvas = document.getElementById('canvas');
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
 
-	var context = canvas.getContext('2d');
-	context.fillStyle = "#FF00FF";
+	render();
+}
+
+function render() {
+	console.log('It is thy time to rendereth')
+	context.fillStyle = '#FF00FF';
 	context.fillRect(0, 0, canvas.width, canvas.height);
+
+	p.render(context);
 }
 
 handleResize();
 window.addEventListener('resize', handleResize);
-
-var hp = new HairPoint();
-var h = new Hair();
-var p = new Pea();
-
-for (let i = 0; i < 20; i ++) {
-	let point = Point.polar(1, random.real(0, 2 * Math.PI));
-	console.log(point);
-}

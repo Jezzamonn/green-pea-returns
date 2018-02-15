@@ -9,8 +9,6 @@ export default class Pea {
 	constructor(x, y, startColor, endColor, hairLength = 8, flowy = true) {
 		this.bitmapData = null;
 		// TODO: Be an actual image
-		this.image = {width: 0, height: 0};
-		this.matrix = null;
 		this.x = 0;
 		this.y = 0;
 		this.dx = 0;
@@ -19,6 +17,10 @@ export default class Pea {
 
 		this.x = x;
 		this.y = y;
+
+		this.image = new Image();
+		// This does take some time to load... but I think it may be fine to not even wait for it.
+		this.image.src = '../assets/yes.png';
 
 		this.hairs = [];
 		for (let i = 0; i < 6; i ++) {
@@ -80,28 +82,21 @@ export default class Pea {
 		this.dy *= amt;
 	}
 
-	get centreX() {
+	get centerX() {
 		return this.x + 0.5 * this.image.width;
 	}
 
-	get centreY() {
-		return this.y + 0.5 * this.image.width;
+	get centerY() {
+		return this.y + 0.5 * this.image.height;
 	}
 
-	// render(context) {
-	// 	matrix.identity();
-	// 	matrix.translate(-0.5 * image.width, -0.5 * image.height);
-	// 	matrix.rotate(Rndm.float(-0.1, 0.1));
-	// 	matrix.translate(0.5 * image.width, 0.5 * image.height);
+	render(context) {
+		// TODO: rotate the person
+		context.drawImage(this.image, this.centerX, this.centerY);
 
-	// 	matrix.translate(x, y);
-	// 	context.draw(image, matrix);
-
-	// 	for (let i = 0; i < hairs.length; i ++) {
-	// 		hairs[i].render(context);
-	// 	}
-
-	// 	//trace("x=" + x + "\ty=" + y);
-	// }
+		for (let i = 0; i < this.hairs.length; i ++) {
+			this.hairs[i].render(context);
+		}
+	}
 
 }
