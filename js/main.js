@@ -22,6 +22,10 @@ function init() {
 	// Set up event listeners.
 	window.addEventListener('resize', handleResize);
 	document.addEventListener('mousemove', handleMouseMove);
+	// We can handle these all the same actually.
+	document.addEventListener('touchmove', handleTouchEvent);
+	document.addEventListener('touchstart', handleTouchEvent);
+	document.addEventListener('touchend', handleTouchEvent);
 
 	// Kick off the update loop
 	window.requestAnimationFrame(everyFrame);
@@ -63,6 +67,11 @@ function handleResize(evt) {
 
 function handleMouseMove(evt) {
 	mousePosition = {x: evt.clientX, y: evt.clientY};
+}
+
+function handleTouchEvent(evt) {
+	evt.preventDefault();
+	mousePosition = {x: evt.touches[0].clientX, y: evt.touches[0].clientY};
 }
 
 init();
