@@ -41,10 +41,11 @@ export default class Pea {
 			let hair = this.hairs[i];
 			let amt = i / (this.hairs.length - 1)
 
-			//let hairPoint = new Point((0.3 + 0.3 * amt) * image.width, Rndm.float(0.1, 0.2) * image.height);
-			//hairPoint = matrix.transformPoint(hairPoint);
+			let hairPoint = new Point(
+				this.x - this.image.width / 2 + (0.3 + 0.3 * amt) * this.image.width,
+				this.y - this.image.height / 2 + window.random.real(0.1, 0.2) * this.image.height);
 
-			//hair.move(hairPoint.x, hairPoint.y);
+			hair.move(hairPoint.x, hairPoint.y);
 
 			hair.update();
 		}

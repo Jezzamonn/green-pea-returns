@@ -44,7 +44,7 @@ function update() {
 }
 
 function render() {
-	context.fillStyle = '#FF00FF';
+	context.fillStyle = '#FFFFFF';
 	context.fillRect(0, 0, canvas.width, canvas.height);
 
 	for (let i = 0; i < peas.length; i ++) {
