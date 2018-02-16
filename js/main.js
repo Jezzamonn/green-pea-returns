@@ -10,12 +10,12 @@ window.random = new Random();
 
 let canvas = document.getElementById('canvas');
 let context = canvas.getContext('2d');
-let mousePosition = {x: 0, y: 0};
+let mousePosition = null;
 
 let peas = [];
 
 function init() {
-	peas[0] = new Pea(20, 20, Color('#10438a'), Color('#1f9178'));
+	peas[0] = new Pea(window.innerWidth / 2, window.innerHeight / 2, Color('#10438a'), Color('#1f9178'));
 
 	handleResize();
 
@@ -36,7 +36,9 @@ function everyFrame() {
 
 function update() {
 	// update player
-	peas[0].glideTo(mousePosition.x, mousePosition.y, /* glideAmt = */ 0.2)
+	if (mousePosition) {
+		peas[0].glideTo(mousePosition.x, mousePosition.y, /* glideAmt = */ 0.2)
+	}
 
 	for (let i = 0; i < peas.length; i ++) {
 		peas[i].update();
@@ -44,7 +46,7 @@ function update() {
 }
 
 function render() {
-	context.fillStyle = '#FFFFFF';
+	context.fillStyle = '#e3cfe1';
 	context.fillRect(0, 0, canvas.width, canvas.height);
 
 	for (let i = 0; i < peas.length; i ++) {
