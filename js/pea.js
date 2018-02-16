@@ -22,7 +22,7 @@ export default class Pea {
 
 		this.image = new Image();
 		// This does take some time to load... but I think it may be fine to not even wait for it.
-		this.image.src = '../assets/yes.png';
+		this.image.src = './assets/yes.png';
 
 		this.hairs = [];
 		for (let i = 0; i < 6; i ++) {
