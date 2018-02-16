@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "http-server",
-    "webpack": "webpack",
+    "webpack": "webpack || exit 1",
     "watch": "npm-watch"
   },
   "author": "Jezzamon",

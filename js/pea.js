@@ -8,7 +8,7 @@ import Hair from './hair.js';
  */
 export default class Pea {
 
-	constructor(x, y, startColor, endColor, hairLength = 8, flowy = true) {
+	constructor(x, y, startColor, endColor, hairLength = 8) {
 		this.bitmapData = null;
 		// TODO: Be an actual image
 		this.x = 0;
@@ -26,7 +26,7 @@ export default class Pea {
 
 		this.hairs = [];
 		for (let i = 0; i < 6; i ++) {
-			let hair = new Hair(x, y, hairLength, startColor, endColor, flowy);
+			let hair = new Hair(x, y, hairLength, startColor, endColor);
 			this.hairs[i] = hair;
 		}
 	}
@@ -51,8 +51,8 @@ export default class Pea {
 	}
 
 	glideTo(x, y, amt) {
-		let xDist = x - (this.x + 0.5 * this.image.width);
-		let yDist = y - (this.y + 0.5 * this.image.height);
+		let xDist = x - this.x;
+		let yDist = y - this.y;
 		let rSquaredDist = xDist * xDist + yDist * yDist;
 		let rDist = Math.sqrt(rSquaredDist);
 
@@ -85,17 +85,9 @@ export default class Pea {
 		this.dy *= amt;
 	}
 
-	get centerX() {
-		return this.x + 0.5 * this.image.width;
-	}
-
-	get centerY() {
-		return this.y + 0.5 * this.image.height;
-	}
-
 	render(context) {
 		// TODO: rotate the person.
-		context.drawImage(this.image, this.centerX, this.centerY);
+		context.drawImage(this.image, this.x - this.image.width / 2, this.y - this.image.height / 2);
 
 		for (let i = 0; i < this.hairs.length; i ++) {
 			this.hairs[i].render(context);

@@ -1,6 +1,5 @@
 import HairPoint from './hairpoint.js';
 
-
 /**
  * ...
  * @author Jezzamon

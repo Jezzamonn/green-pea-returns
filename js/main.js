@@ -4,10 +4,12 @@ import HairPoint from './hairpoint.js';
 import Hair from './hair.js';
 import Pea from './pea.js';
 
+// Inital global random dealio.
 window.random = new Random();
 
 let canvas = document.getElementById('canvas');
 let context = canvas.getContext('2d');
+let mousePosition = {x: 0, y: 0};
 
 let peas = [];
 
@@ -15,7 +17,12 @@ function init() {
 	peas[0] = new Pea(20, 20);
 
 	handleResize();
+
+	// Set up event listeners.
 	window.addEventListener('resize', handleResize);
+	document.addEventListener('mousemove', handleMouseMove);
+
+	// Kick off the update loop
 	window.requestAnimationFrame(everyFrame);
 }
 
@@ -27,8 +34,20 @@ function everyFrame() {
 }
 
 function update() {
+	// update player
+	peas[0].glideTo(mousePosition.x, mousePosition.y, /* glideAmt = */ 0.2)
+
 	for (let i = 0; i < peas.length; i ++) {
 		peas[i].update();
+	}
+}
+
+function render() {
+	context.fillStyle = '#FF00FF';
+	context.fillRect(0, 0, canvas.width, canvas.height);
+
+	for (let i = 0; i < peas.length; i ++) {
+		peas[i].render(context);
 	}
 }
 
@@ -39,13 +58,8 @@ function handleResize(evt) {
 	render();
 }
 
-function render() {
-	context.fillStyle = '#FF00FF';
-	context.fillRect(0, 0, canvas.width, canvas.height);
-
-	for (let i = 0; i < peas.length; i ++) {
-		peas[i].render(context);
-	}
+function handleMouseMove(evt) {
+	mousePosition = {x: evt.clientX, y: evt.clientY};
 }
 
 init();
