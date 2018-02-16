@@ -39,22 +39,15 @@ export default class Hair {
 	}
 
 	render(context) {
-		// shape.graphics.clear();
-		// shape.graphics.moveTo(points[0].x, points[0].y);
-		// for (let i = 1; i < points.length; i ++) {
-		// 	let amt = i / (points.length - 1);
-		// 	//ColourUtil.combineColours(0x38AD44, 0x97E232, amt);
-		// 	//let colour = new Colour();
-		// 	//colour.h = amt;
-		// 	//colour.s = 0.7;
-		// 	//colour.v = 1;
-		// 	//colour.getRGBfromHSV();
-		// 	//shape.graphics.lineStyle(5, colour.toHex());
-		// 	shape.graphics.lineStyle(5, ColourUtil.combineColours(startColor, endColor, amt));
-		// 	shape.graphics.lineTo(points[i].x, points[i].y);
-		// }
-
-		// context.drawWithQuality(shape, null, null, null, null, false, StageQuality.LOW);
+		for (let i = 1; i < this.points.length; i ++) {
+			let amt = i / (this.points.length - 1);
+			context.beginPath();
+			context.moveTo(this.points[i-1].x, this.points[i-1].y);
+			context.lineTo(this.points[i].x, this.points[i].y);
+			context.lineWidth = 5;
+			context.strokeStyle = this.startColor.mix(this.endColor, amt).hex();
+			context.stroke();
+		}
 	}
 
 }

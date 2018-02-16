@@ -1,3 +1,4 @@
+import Color from 'color';
 import Random from 'random-js';
 
 import HairPoint from './hairpoint.js';
@@ -14,7 +15,7 @@ let mousePosition = {x: 0, y: 0};
 let peas = [];
 
 function init() {
-	peas[0] = new Pea(20, 20);
+	peas[0] = new Pea(20, 20, Color('#10438a'), Color('#1f9178'));
 
 	handleResize();
 
